@@ -21,8 +21,39 @@ SPADE のdiscriminator とloss関数を採用
 FastGAN のdiscriminator とloss関数を採用
 
 
+## 準備
+
+```
+git clone https://github.com/ryuji0398/gan_practice.git
+cd gan_practice
+pip install -r requirements.txt
+```
+
+SPADE_base の設定
+SPADE_base の実行にはSynchronized-BatchNorm-PyTorchも必要 (SPADEの中身で使う)
+```
+cd SPADE_base/models/networks/
+git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch
+cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm .
+cd ../../../
+```
+
+FastGAN_base の設定
+FastGAN_base の実行にはSynchronized-BatchNorm-PyTorchも必要 (SPADEの中身で使う)
+```
+cd FastGAN_base/models/networks/
+git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch
+cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm .
+cd ../../../
+```
+
+
 ## 実行について
 
+#### SPADE_base　実行コマンド,設定方法
+
+
+#### FastGAN_base 実行コマンド,設定方法
 
 
 
