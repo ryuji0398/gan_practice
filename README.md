@@ -12,8 +12,10 @@ FastGAN:https://arxiv.org/abs/2101.04775 (light weight GAN)
 generatr の構造は
 FastGANを元にSAPDEを組み合わせたもの
 - SPADE base
+
 SPADE のdiscriminator とloss関数
 - FastGAN base
+
 FastGAN のdiscriminator とloss関数
 
 
