@@ -5,11 +5,13 @@
 元github
 
 SPADE:https://github.com/NVlabs/SPADE
+
 FastGAN:https://github.com/odegeasslbc/FastGAN-pytorch
 
 元論文
 
 SPADE:https://arxiv.org/abs/1903.07291
+
 FastGAN:https://arxiv.org/abs/2101.04775 (light weight GAN)
 
 ## SPADE base、FastGAN base について
