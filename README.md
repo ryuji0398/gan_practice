@@ -36,6 +36,7 @@ pip install -r requirements.txt
 ```
 
 SPADE_base の設定
+
 SPADE_base の実行にはSynchronized-BatchNorm-PyTorchも必要 (SPADEの中身で使う)
 ```
 cd SPADE_base/models/networks/
@@ -45,6 +46,7 @@ cd ../../../
 ```
 
 FastGAN_base の設定
+
 FastGAN_base の実行にはSynchronized-BatchNorm-PyTorchも必要 (SPADEの中身で使う)
 ```
 cd FastGAN_base/models/networks/
