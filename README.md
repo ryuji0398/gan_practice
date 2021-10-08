@@ -57,7 +57,7 @@ cd ../../../
 
 ## dataset　について
 
-##### coco-stuff
+### coco-stuff
 
 現状,coco-stuffのdatasetを使って学習を行なっている
 
