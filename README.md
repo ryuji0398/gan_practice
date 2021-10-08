@@ -83,6 +83,9 @@ datasetの保存pathへ移動
 cd datasets/coco2017
 ```
 
+
+
+
 保存する場所以下でdataを取得
 
 coco の train2017の画像を取得
@@ -120,6 +123,14 @@ wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
 unzip annotations_trainval2017.zip
 ```
 
+
+
+coco datasets の準備（SPADEでの入力用に作成を行う）
+
+```
+pip install pycocotools
+python coco_generate_instance_map.py --path 
+```
 
 ## 実行について
 
