@@ -147,6 +147,9 @@ python train.py --name [experiment_name] --dataset_mode coco --dataroot [path_to
 ├── README.md
 ├── SPADE_base
 ├── FastGAN_base
-│   └── FastGAN_base
+│   └── (FastGAN_base)
+├── datsets
+│   ├── coco2017/
+│   └── coco_generate_instance_map.py (coco data においてdataの準備のコード)
 └── requirements.txt
 ```
