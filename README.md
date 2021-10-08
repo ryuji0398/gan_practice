@@ -101,7 +101,6 @@ wget http://images.cocodataset.org/zips/val2017.zip
 unzip val2017.zip
 # val2017 と保存されるので val_img とフォルダの名前を変える
 mv val2017 val_img 
-
 ```
 
 coco-stuff labelmap　の取得
@@ -112,7 +111,6 @@ unzip stuffthingmaps_trainval2017.zip
 # train2017 と val2017 と保存される(たしか...) ので フォルダの名前をそれぞれ変える
 mv train2017 train_label
 mv val2017 val_label
-
 ```
 
 coco のアノテーション の取得
@@ -120,7 +118,6 @@ coco のアノテーション の取得
 wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
 # 解凍
 unzip annotations_trainval2017.zip
-
 ```
 
 
