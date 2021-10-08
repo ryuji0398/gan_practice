@@ -128,9 +128,16 @@ unzip annotations_trainval2017.zip
 coco datasets の準備（SPADEでの入力用に作成を行う）
 
 ```
+# 上記の場所にdatsetsを保存した場合
 pip install pycocotools
-python coco_generate_instance_map.py --path 
+python coco_generate_instance_map.py --annotation_file ./annotations/instances_train2017.json --input_label_dir ./coco2017/train_label/ --output_instance_dir ./coco2017/train_inst/
 ```
+
+```
+# 他の場所にdatasetを保存した場合, path それぞれ指定
+python coco_generate_instance_map.py --annotation_file [annotations file path ./annotations/instances_train2017.json] --input_label_dir [data path ./train_label/] --output_instance_dir [output data path ./train_inst/]
+```
+
 
 ## 実行について
 
