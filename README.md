@@ -55,6 +55,58 @@ cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm .
 cd ../../../
 ```
 
+## dataset　について
+
+##### coco-stuff
+
+現状,coco-stuffのdatasetを使って学習を行なっている
+
+```
+datasetの形
+./datasets/coco2017
+├── train_img
+│   └── (cococ2017の画像)
+├── train_inst
+│   └── (SAPDEで生成するもの,入力になる？？)
+├── train_label
+│   └── (coco_stuffのlabel)
+├── val_img
+├── val_inst
+├── val_label
+└── annotations
+```
+
+
+```
+cd datasets/coco2017
+# train2017の画像を取得
+wget http://images.cocodataset.org/zips/train2017.zip
+# 解凍
+unzip train2017.zip
+# train2017 と保存されるので train_img とフォルダの名前を変える
+mv train2017 train_img 
+
+# val2017の画像を取得
+wget http://images.cocodataset.org/zips/val2017.zip
+# 解凍
+unzip val2017.zip
+# val2017 と保存されるので val_img とフォルダの名前を変える
+mv val2017 val_img 
+
+# coco-stuff labelmap　の取得
+wget http://calvin.inf.ed.ac.uk/wp-content/uploads/data/cocostuffdataset/stuffthingmaps_trainval2017.zip
+# 解凍
+unzip stuffthingmaps_trainval2017.zip
+# train2017 と val2017 と保存される(たしか...) ので フォルダの名前をそれぞれ変える
+mv train2017 train_label
+mv val2017 val_label
+
+# coco のアノテーション の取得
+wget http://images.cocodataset.org/annotations/annotations_trainval2017.zip
+# 解凍
+unzip annotations_trainval2017.zip
+
+```
 
 
 ## 実行について
