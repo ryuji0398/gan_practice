@@ -48,6 +48,7 @@ cd ../../../
 FastGAN_base の設定
 
 FastGAN_base の実行にはSynchronized-BatchNorm-PyTorchも必要 (SPADEの中身で使う)
+
 FastGAN base においてもSPADE を使用しているためこちらの実行が必要
 ```
 cd FastGAN_base/models/networks/
