@@ -145,6 +145,13 @@ python coco_generate_instance_map.py --annotation_file [annotations file path ./
 
 #### SPADE_base　実行コマンド,設定方法
 
+
+```
+path_to_coco_dataset は上記の設定でいくと
+
+./datasets/coco2017/
+```
+
 ```
 train　コマンド
 python train.py --name [experiment_name] --dataset_mode coco --dataroot [path_to_coco_dataset] 
@@ -154,7 +161,7 @@ python train.py --name [experiment_name] --dataset_mode coco --dataroot [path_to
 ```
 
 
-#### FastGAN_base 実行コマンド,設定方法
+#### FastGAN_base　実行コマンド,設定方法
 
 
 
