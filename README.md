@@ -54,7 +54,7 @@ FastGAN base においてもSPADE を使用しているためこちらの実行�
 cd FastGAN_base/SPADE/models/networks/
 git clone https://github.com/vacancy/Synchronized-BatchNorm-PyTorch
 cp -rf Synchronized-BatchNorm-PyTorch/sync_batchnorm .
-cd ../../../
+cd ../../../../
 ```
 
 ## dataset　について
