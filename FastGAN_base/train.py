@@ -198,7 +198,7 @@ def train(args, opt, spade_dataloader):
                         'opt_g': optimizerG.state_dict(),
                         'opt_d': optimizerD.state_dict()}, saved_model_folder+'/all_%d.pth'%iteration)
 
-def spade_dataget():
+def spade_dataget(data_path, batch_size):
     # SPADE setup, dataget
     import sys
     from collections import OrderedDict
@@ -212,13 +212,9 @@ def spade_dataget():
     opt = TrainOptions().parse()
     opt.name = 'coco_pra'
     opt.dataset_mode = 'coco'
-    # opt.dataroot = '/home/noda/SPADE/datasets/'
-    # car only
-    # opt.dataroot = '/home/noda/data/coco2017/only_car/car_only/'
-    opt.dataroot = '/home/noda/data/coco2017/num_datasets/coco_3000'
+    opt.dataroot = data_path
+    opt.batchSize = batch_size
     
-
-
     # print options to help debugging
     print(' '.join(sys.argv))
 
@@ -229,8 +225,6 @@ def spade_dataget():
 
 
 if __name__ == "__main__":
-    spade_dataloader, opt = spade_dataget()
-    # breakpoint()
 
     parser = argparse.ArgumentParser(description='region gan')
 
@@ -245,18 +239,22 @@ if __name__ == "__main__":
 
 
     args = parser.parse_args()
-    # args.path = '/home/noda/SPADE/datasets/train_img'
-    # car only
-    # args.path = '/home/noda/data/coco2017/only_car/car_only/train_img'
-    args.path = '/home/noda/data/coco2017/num_datasets/coco_3000/train_img'
+    data_path = '/home/noda/data/coco2017/num_datasets/coco_3000/'
+    args.path = data_path + 'train_img'
+    
     # args.name = 'coco_car_new_3000'
     args.name = 'coco_pra'
     args.iter = 50000
     ## dl max batch 16 ???
     args.batch_size = 16
+
     # args.ckpt = './train_results/coco_spade_256/models/all_225000.pth'
     args.cuda = 0
     args.im_size = 256
+    batch_size = args.batch_size
     print(args)
+
+    spade_dataloader, opt = spade_dataget(data_path, batch_size)
+    # breakpoint()
 
     train(args, opt, spade_dataloader)
