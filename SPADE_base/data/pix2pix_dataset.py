@@ -58,9 +58,18 @@ class Pix2pixDataset(BaseDataset):
         # Label Image
         label_path = self.label_paths[index]
         label = Image.open(label_path)
+        if self.opt.dataset_mode == 'custom':
+            # 1チャネルの画像(glay_scale)として読み込む必要がある
+            label = label.convert('L')
         params = get_params(self.opt, label.size)
         transform_label = get_transform(self.opt, params, method=Image.NEAREST, normalize=False)
-        label_tensor = transform_label(label) * 255.0
+        if self.opt.dataset_mode == 'custom':
+            # select_car での dataset を想定
+            # labelが 2種類しかなく元の画像のlabelの値が 0 or 255 であったため 0 or 1 にしておく必要があった
+            # transformでおそらく正規化してあるので元々のものは255.0　がかけてあった
+            label_tensor = transform_label(label)
+        else:
+            label_tensor = transform_label(label) * 255.0
         label_tensor[label_tensor == 255] = self.opt.label_nc  # 'unknown' is opt.label_nc
 
         # input image (real images)
