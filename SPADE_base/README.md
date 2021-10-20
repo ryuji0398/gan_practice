@@ -2,7 +2,9 @@
 # SPADE_base
 
 画像生成の実行用のコードでSPADEをベースに作られています。
+
 generatr の構造は FastGANを元にSAPDEを組み合わせたもの
+
 SPADE のdiscriminator とloss関数を採用
 
 ### 実行コマンド
@@ -52,6 +54,7 @@ python train.py --name [name] --dataset_mode custom --label_dir [label_path] --i
 ```
 
 custom data での実行に関しては現状 2種類のみのクラスでしかおそらく実行できない（あるクラスとその他）
+
 label の入力については 2種類のもののみしか考えていないので　0 もしくは 255 の値が入っているグレースケールの画像にする必要がある
 
 
