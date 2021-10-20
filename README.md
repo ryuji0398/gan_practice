@@ -157,10 +157,10 @@ path_to_coco_dataset は上記の設定でいくと
 ```
 
 ```
-train　コマンド
+# train　コマンド
 python train.py --name [experiment_name] --dataset_mode coco --dataroot [path_to_coco_dataset] 
 
-test コマンド
+# test コマンド
 python train.py --name [experiment_name] --dataset_mode coco --dataroot [path_to_coco_dataset]
 ```
 
