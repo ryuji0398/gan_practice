@@ -164,7 +164,7 @@ test コマンド
 python train.py --name [experiment_name] --dataset_mode coco --dataroot [path_to_coco_dataset]
 ```
 
-他にも指定
+詳しいものは SPADE_base の README 参照
 
 #### FastGAN_base　実行コマンド,設定方法
 
