@@ -13,10 +13,10 @@ SPADE のdiscriminator とloss関数を採用
 - coco dataset を使用する場合
 
 ```
-学習コマンド
+# 学習コマンド
 python train.py --name [name] --dataset_mode coco --dataroot [data_path] --batchSize [バッチサイズの指定] 
 
-テストコマンド
+# テストコマンド
 python test.py --name [name] --dataset_mode coco --dataroot [data_path] 
 
 ```
@@ -48,7 +48,7 @@ dataroot/
 - custom dataset を使用する場合
 
 ```
-学習コマンド
+# 学習コマンド
 python train.py --name [name] --dataset_mode custom --label_dir [label_path] --image_dir [img_path] --label_nc [ラベルの種類] --batchSize [バッチサイズの指定] --no_instance
 
 ```
