@@ -56,6 +56,7 @@ def train_d(net, data, label="real"):
         
 
 def train(args, opt, spade_dataloader):
+    breakpoint()
 
     data_root = args.path
     total_iterations = args.iter
@@ -198,7 +199,7 @@ def train(args, opt, spade_dataloader):
                         'opt_g': optimizerG.state_dict(),
                         'opt_d': optimizerD.state_dict()}, saved_model_folder+'/all_%d.pth'%iteration)
 
-def spade_dataget(data_path, batchSize):
+def spade_dataget():
     # SPADE setup, dataget
     import sys
     from collections import OrderedDict
@@ -211,10 +212,6 @@ def spade_dataget(data_path, batchSize):
     # parse options
     breakpoint()
     opt = TrainOptions().parse()
-    opt.name = 'coco_pra'
-    opt.dataset_mode = 'coco'
-    opt.dataroot = data_path
-    opt.batchSize = batchSize
     
     # print options to help debugging
     print(' '.join(sys.argv))
@@ -229,7 +226,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='region gan')
 
-    parser.add_argument('--dataroot', type=str, default='../lmdbs/art_landscape_1k', help='path of resource dataset, should be a folder that has one or many sub image folders inside')
+    parser.add_argument('--dataroot', type=str, default=None, help='path of resource dataset, should be a folder that has one or many sub image folders inside')
     parser.add_argument('--cuda', type=int, default=0, help='index of gpu to use')
     parser.add_argument('--name', type=str, default='test1', help='experiment name')
     parser.add_argument('--iter', type=int, default=50000, help='number of iterations')
@@ -238,33 +235,29 @@ if __name__ == "__main__":
     parser.add_argument('--im_size', type=int, default=1024, help='image resolution')
     parser.add_argument('--ckpt', type=str, default='None', help='checkpoint weight path if have one')
 
-    # SPADE との兼ね合いで加えたもの
+    # SPADE dataloader との兼ね合いで加えたもの
     parser.add_argument('--dataset_mode', type=str, default='coco')
     parser.add_argument('--label_dir', type=str, default=None)
     parser.add_argument('--image_dir', type=str, default=None)
-
+    parser.add_argument('--label_nc', type=int, default=182)
+    parser.add_argument('--no_instance', action='store_true')
 
 
     args = parser.parse_args()
 
-    data_path = '/home/noda/data/coco2017/num_datasets/coco_3000/'
-    args.dataroot = data_path + 'train_img'
-    # args.dataset_mode = 'coco' 
-
-    
-    # args.name = 'coco_car_new_3000'
-    args.name = 'coco_pra'
+    # iter : train number of iteration
     args.iter = 50000
-    ## dl max batch 16 ???
-    args.batchSize = 16
-
     args.cuda = 0
     args.im_size = 256
-    batchSize = args.batchSize
     print(args)
     breakpoint()
 
-    spade_dataloader, opt = spade_dataget(data_path, batchSize)
-    # breakpoint()
+    spade_dataloader, opt = spade_dataget()
+    breakpoint()
+
+    if args.dataset_mode == 'custom':
+        args.dataroot = args.image_dir
+    else:
+        args.dataroot = args.dataroot + 'train_img'
 
     train(args, opt, spade_dataloader)
