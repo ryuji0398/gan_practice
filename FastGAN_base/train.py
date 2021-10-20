@@ -60,7 +60,7 @@ def train(args, opt, spade_dataloader):
     data_root = args.path
     total_iterations = args.iter
     checkpoint = args.ckpt
-    batch_size = args.batch_size
+    batch_size = args.batchSize
     im_size = args.im_size
     ndf = 64
     ngf = 64
@@ -198,7 +198,7 @@ def train(args, opt, spade_dataloader):
                         'opt_g': optimizerG.state_dict(),
                         'opt_d': optimizerD.state_dict()}, saved_model_folder+'/all_%d.pth'%iteration)
 
-def spade_dataget(data_path, batch_size):
+def spade_dataget(data_path, batchSize):
     # SPADE setup, dataget
     import sys
     from collections import OrderedDict
@@ -209,11 +209,12 @@ def spade_dataget(data_path, batch_size):
     from SPADE.trainers.pix2pix_trainer import Pix2PixTrainer
 
     # parse options
+    breakpoint()
     opt = TrainOptions().parse()
     opt.name = 'coco_pra'
     opt.dataset_mode = 'coco'
     opt.dataroot = data_path
-    opt.batchSize = batch_size
+    opt.batchSize = batchSize
     
     # print options to help debugging
     print(' '.join(sys.argv))
@@ -228,33 +229,42 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description='region gan')
 
-    parser.add_argument('--path', type=str, default='../lmdbs/art_landscape_1k', help='path of resource dataset, should be a folder that has one or many sub image folders inside')
+    parser.add_argument('--dataroot', type=str, default='../lmdbs/art_landscape_1k', help='path of resource dataset, should be a folder that has one or many sub image folders inside')
     parser.add_argument('--cuda', type=int, default=0, help='index of gpu to use')
     parser.add_argument('--name', type=str, default='test1', help='experiment name')
     parser.add_argument('--iter', type=int, default=50000, help='number of iterations')
     parser.add_argument('--start_iter', type=int, default=0, help='the iteration to start training')
-    parser.add_argument('--batch_size', type=int, default=8, help='mini batch number of images')
+    parser.add_argument('--batchSize', type=int, default=16, help='mini batch number of images')
     parser.add_argument('--im_size', type=int, default=1024, help='image resolution')
     parser.add_argument('--ckpt', type=str, default='None', help='checkpoint weight path if have one')
 
+    # SPADE との兼ね合いで加えたもの
+    parser.add_argument('--dataset_mode', type=str, default='coco')
+    parser.add_argument('--label_dir', type=str, default=None)
+    parser.add_argument('--image_dir', type=str, default=None)
+
+
 
     args = parser.parse_args()
+
     data_path = '/home/noda/data/coco2017/num_datasets/coco_3000/'
-    args.path = data_path + 'train_img'
+    args.dataroot = data_path + 'train_img'
+    # args.dataset_mode = 'coco' 
+
     
     # args.name = 'coco_car_new_3000'
     args.name = 'coco_pra'
     args.iter = 50000
     ## dl max batch 16 ???
-    args.batch_size = 16
+    args.batchSize = 16
 
-    # args.ckpt = './train_results/coco_spade_256/models/all_225000.pth'
     args.cuda = 0
     args.im_size = 256
-    batch_size = args.batch_size
+    batchSize = args.batchSize
     print(args)
+    breakpoint()
 
-    spade_dataloader, opt = spade_dataget(data_path, batch_size)
+    spade_dataloader, opt = spade_dataget(data_path, batchSize)
     # breakpoint()
 
     train(args, opt, spade_dataloader)
