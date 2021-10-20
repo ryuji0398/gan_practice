@@ -4,7 +4,13 @@ from __future__ import division
 from __future__ import print_function
 
 import numpy as np
-from skimage.measure import compare_ssim
+import skimage
+
+if skimage.__version__ == '0.14.3':
+    from skimage.measure import compare_ssim
+else:
+    from skimage.metrics import structural_similarity as compare_ssim
+
 import torch
 from torch.autograd import Variable
 
