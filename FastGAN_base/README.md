@@ -1,23 +1,22 @@
 
-# SPADE_base
+# FastGAN_base
 
-画像生成の実行用のコードでSPADEをベースに作られています。
+画像生成の実行用のコードでFastGANをベースに作られています。
 
 generatr の構造は FastGANを元にSAPDEを組み合わせたもの
 
-SPADE のdiscriminator とloss関数を採用
+FastGAN のdiscriminator とloss関数を採用
 
 ### 実行コマンド
 
 基本の実行コマンド
+
 - coco dataset を使用する場合
 
 ```
 # 学習コマンド
 python train.py --name [name] --dataset_mode coco --dataroot [data_path] --batchSize [バッチサイズの指定] 
 
-# テストコマンド
-python test.py --name [name] --dataset_mode coco --dataroot [data_path] 
 
 ```
 
@@ -35,7 +34,7 @@ dataroot/
 
 ```
 
-
+<!-- 
 テストコマンドについて
 以下のもので追加に指定することも可能、他にもある
 ```
@@ -43,7 +42,7 @@ dataroot/
 --how_many    : 出力する画像枚数（生成する枚数）
 --which_epoch : いつのモデルを使うか（指定がなければdefaltで最後のものが使われる）
 
-```
+``` -->
 
 - custom dataset を使用する場合
 
@@ -72,8 +71,7 @@ label の入力については 2種類のもののみしか考えていないの
 |-- models
 |-- options
 |-- trainers
-|-- utils
-|
-|-- test.py
+|-- models.py
+|-- operation.py
 └── train.py
 ```
