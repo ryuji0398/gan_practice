@@ -173,7 +173,7 @@ class Generator(nn.Module):
             # self.feat_1024 = SPADEResnetBlock(16, 8, self.opt)
         
     def forward(self, input, seg):
-        # breakpoint()
+        breakpoint()
         
         feat_4   = self.init(input)
 

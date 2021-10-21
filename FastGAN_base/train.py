@@ -58,7 +58,7 @@ def train_d(net, data, label="real"):
 def train(args, opt, spade_dataloader):
     breakpoint()
 
-    data_root = args.path
+    data_root = args.dataroot
     total_iterations = args.iter
     checkpoint = args.ckpt
     batch_size = args.batchSize
@@ -147,9 +147,12 @@ def train(args, opt, spade_dataloader):
 
         # segmentation_image get
         data_k = next(spade_data)
-        input_semantics, spade_real_image = spade_model.preprocess_input(data_k)
-        # breakpoint()
-            
+        data_k['label'] = data_k['label'].to(device)
+        data_k['image'] = data_k['image'].to(device)
+        data_k['instance'] = data_k['instance'].to(device)
+        breakpoint()
+        input_semantics, spade_real_image = spade_model.preprocess_input(data_k)            
+        
         # breakpoint()
         fake_images = netG(noise, input_semantics)
 
@@ -210,7 +213,6 @@ def spade_dataget():
     from SPADE.trainers.pix2pix_trainer import Pix2PixTrainer
 
     # parse options
-    breakpoint()
     opt = TrainOptions().parse()
     
     # print options to help debugging
@@ -250,10 +252,8 @@ if __name__ == "__main__":
     args.cuda = 0
     args.im_size = 256
     print(args)
-    breakpoint()
 
     spade_dataloader, opt = spade_dataget()
-    breakpoint()
 
     if args.dataset_mode == 'custom':
         args.dataroot = args.image_dir
