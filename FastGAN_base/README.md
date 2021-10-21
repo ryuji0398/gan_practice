@@ -34,15 +34,6 @@ dataroot/
 
 ```
 
-<!-- 
-テストコマンドについて
-以下のもので追加に指定することも可能、他にもある
-```
---results_dir : 結果の出力先
---how_many    : 出力する画像枚数（生成する枚数）
---which_epoch : いつのモデルを使うか（指定がなければdefaltで最後のものが使われる）
-
-``` -->
 
 - custom dataset を使用する場合
 
@@ -56,6 +47,21 @@ custom data での実行に関しては現状 2種類のみのクラスでしか
 
 label の入力については 2種類のもののみしか考えていないので　0 もしくは 255 の値が入っているグレースケールの画像にする必要がある
 
+学習用の引数はSPADEとの統合の兼ね合いで使えないものもある
+
+学習のiteration指定は train.py の ```if __name__ == "__main__":　```以下の　args.iterで指定する必要がある
+
+引数では指定することができない
+
+<!-- 
+テストコマンドについて
+以下のもので追加に指定することも可能、他にもある
+```
+--results_dir : 結果の出力先
+--how_many    : 出力する画像枚数（生成する枚数）
+--which_epoch : いつのモデルを使うか（指定がなければdefaltで最後のものが使われる）
+
+``` -->
 
 
 ### フォルダ説明
@@ -64,13 +70,14 @@ label の入力については 2種類のもののみしか考えていないの
 
 ./
 |
-|-- checkpoints 
-|-- data        
-|-- datasets    
-|-- docs
-|-- models
-|-- options
-|-- trainers
+|-- benchmarking 
+|-- docker     
+|-- lpips 
+|-- scripts
+|-- SPADE         : SPADE の dataloaderとgenneratorの構造上必要であるため
+|-- train_results : 実験結果が保存される
+|-- diffaug.py
+|-- eval.py
 |-- models.py
 |-- operation.py
 └── train.py
