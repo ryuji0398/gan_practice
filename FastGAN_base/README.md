@@ -37,6 +37,10 @@ dataroot/
 
 - custom dataset を使用する場合
 
+ごめんなさい動きませんでした
+spade_dataloaderでdataを取ってくる部分でエラーが起こっています
+わかりません
+
 ```
 # 学習コマンド
 python train.py --name [name] --dataset_mode custom --label_dir [label_path] --image_dir [img_path] --label_nc [ラベルの種類] --batchSize [バッチサイズの指定] --no_instance
