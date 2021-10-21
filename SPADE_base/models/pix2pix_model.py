@@ -120,6 +120,7 @@ class Pix2PixModel(torch.nn.Module):
             else self.opt.label_nc
         input_label = self.FloatTensor(bs, nc, h, w).zero_()
         input_semantics = input_label.scatter_(1, label_map, 1.0)
+        # input_semantics = input_label.scatter_(1, label_map, 1.0, reduce='add')
 
         # concatenate instance map if it exists
         if not self.opt.no_instance:

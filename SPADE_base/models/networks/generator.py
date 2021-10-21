@@ -64,7 +64,6 @@ class SPADEGenerator(BaseNetwork):
 
     def forward(self, input, z=None):
         seg = input
-        # breakpoint()
         noise = torch.Tensor(input.shape[0], 256).normal_(0, 1).to(input.get_device())
 
         # x = F.interpolate(seg, size=(4, 4))
