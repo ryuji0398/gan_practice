@@ -144,7 +144,7 @@ python coco_generate_instance_map.py --annotation_file ./annotations/instances_t
 python coco_generate_instance_map.py --annotation_file [annotations file path ./annotations/instances_train2017.json] --input_label_dir [data path ./train_label/] --output_instance_dir [output data path ./train_inst/]
 ```
 
-
+<---
 ## 実行について
 
 #### SPADE_base　実行コマンド,設定方法
@@ -167,6 +167,8 @@ python train.py --name [experiment_name] --dataset_mode coco --dataroot [path_to
 詳しいものは SPADE_base の README 参照
 
 #### FastGAN_base　実行コマンド,設定方法
+
+-->
 
 
 
